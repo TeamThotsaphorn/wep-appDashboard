@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>EEC Seafood Operations</title>
+<meta name="description" content="แดชบอร์ดเที่ยวเรือประมง พยากรณ์ทะเล และการส่งออกของ EEC Seafood จากข้อมูล MongoDB">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Thai:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/app.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231c6aa8'/%3E%3Cpath d='M5 19c3-3 5-3 8 0s5 3 8 0 5-3 6-1' stroke='white' stroke-width='2.4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+</head>
+<body>
+<div class="app">
+  <aside class="rail" id="rail" aria-label="เมนู">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M3 14c2.5-2.5 4.5-2.5 7 0s4.5 2.5 7 0 3.5-2 4-1"/><path d="M3 19c2.5-2.5 4.5-2.5 7 0s4.5 2.5 7 0 3.5-2 4-1" opacity=".6"/><path d="M12 3v7M9 7l3 3 3-3"/></svg></div>
+      <div><strong>EEC SEAFOOD</strong><small>Marine Operations</small></div>
+    </div>
+    <div>
+      <div class="nav-label">งานประจำวัน</div>
+      <nav class="nav">
+        <a href="#overview" data-page="overview"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>ภาพรวม</a>
+        <a href="#forecast" data-page="forecast"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 12c2.5-2.5 4.5-2.5 7 0s4.5 2.5 7 0 4.5-2.5 6 0"/><path d="M2 18c2.5-2.5 4.5-2.5 7 0s4.5 2.5 7 0 4.5-2.5 6 0"/><circle cx="17" cy="5" r="2.5"/></svg>พยากรณ์ทะเล 7 วัน</a>
+        <a href="#trips" data-page="trips"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M3 15h18l-3 5H6z"/><path d="M12 15V4l6 8h-6"/></svg>เที่ยวเรือ</a>
+        <a href="#zones" data-page="zones"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-6-6.2-6-11a6 6 0 1 1 12 0c0 4.8-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg>พื้นที่ประมง</a>
+        <a href="#species" data-page="species"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M3 12c3-5 9-6 14-2l4-3v10l-4-3c-5 4-11 3-14-2z"/><circle cx="8" cy="11" r=".8" fill="currentColor"/></svg>ชนิดสัตว์น้ำ</a>
+        <a href="#environment" data-page="environment"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 14a5 5 0 0 1 9-5 4 4 0 0 1 7 3 3 3 0 0 1-1 6H7a3 3 0 0 1-3-4z"/></svg>อากาศย้อนหลัง</a>
+        <a href="#exports" data-page="exports"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M3 7l9-4 9 4-9 4z"/><path d="M3 7v10l9 4 9-4V7"/><path d="M12 11v10"/></svg>การส่งออก</a>
+      </nav>
+    </div>
+    <div>
+      <div class="nav-label">การวิเคราะห์</div>
+      <nav class="nav">
+        <a href="#model" data-page="model"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>ผลโมเดล & CRISP-DM</a>
+        <a href="#data" data-page="data"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><ellipse cx="12" cy="5.5" rx="8" ry="2.5"/><path d="M4 5.5v13c0 1.4 3.6 2.5 8 2.5s8-1.1 8-2.5v-13"/><path d="M4 12c0 1.4 3.6 2.5 8 2.5s8-1.1 8-2.5"/></svg>แหล่งข้อมูล</a>
+      </nav>
+    </div>
+    <div class="rail-foot" id="railFoot"><b>Snapshot</b><br>กำลังโหลดข้อมูล…</div>
+  </aside>
+
+  <main class="main">
+    <div class="wrap">
+      <header class="topbar">
+        <div>
+          <div style="display:flex;gap:8px;align-items:center">
+            <button class="btn menu-btn" id="menuBtn" aria-label="เปิดเมนู" aria-controls="rail">☰</button>
+            <span class="eyebrow" id="eyebrow">Operations overview</span>
+          </div>
+          <h1 id="pageTitle">ภาพรวมการดำเนินงาน</h1>
+          <p class="sub" id="pageSub"></p>
+        </div>
+        <div class="top-actions">
+          <span class="chip" id="freshChip"><span class="dot warn"></span>กำลังโหลด…</span>
+          <button class="btn" id="themeBtn" aria-label="สลับธีม">ธีม</button>
+        </div>
+      </header>
+
+      <div id="loading" class="loading">กำลังโหลดข้อมูล…</div>
+
+      <!-- ===================== OVERVIEW ===================== -->
+      <section id="overview" hidden>
+        <div class="kpis">
+          <div class="card kpi"><div class="label">เที่ยวเรือทั้งหมด</div><div class="value" id="ovTrips">—</div><div class="foot" id="ovRange">—</div></div>
+          <div class="card kpi"><div class="label">ผลจับรวม (ตัน)</div><div class="value" id="ovCatch">—</div><div class="foot">ft_total_catch_kg</div></div>
+          <div class="card kpi"><div class="label">รายได้รวม (ล้านบาท)</div><div class="value" id="ovRev">—</div><div class="foot">ft_revenue_thb</div></div>
+          <div class="card kpi"><div class="label">กำไรรวม (ล้านบาท)</div><div class="value" id="ovProfit">—</div><div class="foot" id="ovMargin">—</div></div>
+        </div>
+        <div class="grid-wide">
+          <div class="card">
+            <div class="card-head">
+              <div><h2>แนวโน้มรายเดือน</h2><p id="ovTrendNote">ตามวันออกเรือ</p></div>
+              <div class="seg" id="ovMetric" role="group" aria-label="เลือกตัวชี้วัด">
+                <button data-m="catch" aria-pressed="true">ผลจับ</button><button data-m="trips" aria-pressed="false">เที่ยวเรือ</button><button data-m="revenue" aria-pressed="false">รายได้</button><button data-m="profit" aria-pressed="false">กำไร</button>
+              </div>
+            </div>
+            <div class="chart" id="ovTrend"></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><div><h2>คลื่นสูงสุดพรุ่งนี้</h2><p id="ovFcNote">จากพยากรณ์รอบล่าสุด</p></div><a class="tag" href="#forecast">ดูทั้ง 7 วัน →</a></div>
+            <div id="ovFc"></div>
+          </div>
+        </div>
+        <div class="grid2">
+          <div class="card">
+            <div class="card-head"><div><h2>ผลจับเฉลี่ยต่อเที่ยว แยกเครื่องมือ</h2><p>กิโลกรัมต่อเที่ยว ทุกปี</p></div></div>
+            <div class="chart" id="ovGear" style="min-height:200px"></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><div><h2>ข้อค้นพบหลัก</h2><p>จากการวิเคราะห์ใน src/05–07</p></div><a class="tag" href="#model">รายละเอียด →</a></div>
+            <div class="note" id="ovFindings">—</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== FORECAST ===================== -->
+      <section id="forecast" hidden>
+        <div class="note warn"><b>พยากรณ์จากแบบจำลอง ไม่ใช่ประกาศทางการ</b> ค่ามาจาก Open-Meteo (กริด marine และกริดอากาศเป็นคนละชุด ไม่ใช่ค่าที่พิกัดโซนตรงๆ) ใช้ดูแนวโน้มสภาพทะเลเท่านั้น การตัดสินใจออกเรือต้องอ้างอิงประกาศกรมอุตุนิยมวิทยาและข้อกำหนดของเรือ</div>
+        <div class="kpis" id="fcKpis"></div>
+        <div class="card">
+          <div class="card-head">
+            <div><h2>ตาราง 23 โซน × 7 วัน</h2><p id="fcHeatNote">คลิกช่องเพื่อดูรายละเอียดของวันนั้น</p></div>
+            <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+              <div class="seg" id="fcVar" role="group" aria-label="เลือกตัวแปร">
+                <button data-v="wave" aria-pressed="true">คลื่น (ม.)</button><button data-v="wind" aria-pressed="false">ลม (นอต)</button><button data-v="rain" aria-pressed="false">ฝน (มม.)</button><button data-v="period" aria-pressed="false">คาบคลื่น (วิ)</button>
+              </div>
+              <div class="ramp"><span id="rampLo">ต่ำ</span><span class="bar"></span><span id="rampHi">สูง</span></div>
+            </div>
+          </div>
+          <div class="tbox" style="max-height:none;border:0"><table class="heat" id="fcHeat"></table></div>
+        </div>
+        <div class="grid-wide">
+          <div class="card">
+            <div class="card-head"><div><h2 id="fcMapTitle">ตำแหน่งโซน</h2><p>สีตามค่าของวันที่เลือก ขนาดจุดเท่ากันทุกโซน</p></div></div>
+            <div class="chart" id="fcMap" style="min-height:360px"></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><div><h2 id="fcDayTitle">รายละเอียดวันที่เลือก</h2><p>เรียงจากคลื่นสูงไปต่ำ</p></div></div>
+            <div class="tbox" style="max-height:420px"><table id="fcDayTable"></table></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== TRIPS ===================== -->
+      <section id="trips" hidden>
+        <div class="card">
+          <div class="filters">
+            <label class="field">พื้นที่<select id="tfZone"></select></label>
+            <label class="field">เครื่องมือ<select id="tfGear"></select></label>
+            <label class="field">ตั้งแต่<input type="date" id="tfFrom"></label>
+            <label class="field">ถึง<input type="date" id="tfTo"></label>
+            <button class="btn" id="tfReset">ล้างตัวกรอง</button>
+            <button class="btn primary" id="tfCsv">ดาวน์โหลด CSV</button>
+            <span class="count" id="tfCount">—</span>
+          </div>
+        </div>
+        <div class="kpis" id="tKpis"></div>
+        <div class="card">
+          <div class="card-head"><div><h2>ผลจับรายเดือนตามตัวกรอง</h2><p>ตัน ต่อเดือน</p></div></div>
+          <div class="chart" id="tTrend" style="min-height:220px"></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><div><h2>รายการเที่ยวเรือ</h2><p>คลิกหัวคอลัมน์เพื่อเรียง · ไม่แสดงชื่อกัปตันและชื่อเรือ</p></div></div>
+          <div class="tbox"><table id="tTable"></table></div>
+          <div class="pager"><button class="btn" id="tPrev">← ก่อนหน้า</button><span id="tPage">—</span><button class="btn" id="tNext">ถัดไป →</button></div>
+        </div>
+      </section>
+
+      <!-- ===================== ZONES ===================== -->
+      <section id="zones" hidden>
+        <div class="grid-wide">
+          <div class="card">
+            <div class="card-head"><div><h2>ตำแหน่งโซนประมง</h2><p>ขนาดจุดตามจำนวนเที่ยวเรือ · สีตามผลจับเฉลี่ยต่อเที่ยว</p></div><div class="ramp"><span>จับน้อย</span><span class="bar"></span><span>จับมาก</span></div></div>
+            <div class="chart" id="zMap" style="min-height:400px"></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><div><h2>สรุปตามภูมิภาค</h2><p>ทุกปีรวมกัน</p></div></div>
+            <div class="tbox"><table id="zRegion"></table></div>
+            <p class="missing" id="zMissing" style="margin:10px 0 0"></p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head"><div><h2>ข้อมูลรายโซน</h2><p>คลิกหัวคอลัมน์เพื่อเรียง</p></div></div>
+          <div class="tbox"><table id="zTable"></table></div>
+        </div>
+      </section>
+
+      <!-- ===================== SPECIES ===================== -->
+      <section id="species" hidden>
+        <div class="grid2">
+          <div class="card">
+            <div class="card-head"><div><h2>ผลจับรวมตามชนิด</h2><p>ตัน ทุกปีรวมกัน</p></div></div>
+            <div class="chart" id="spKg"></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><div><h2>มูลค่ารวมตามชนิด</h2><p>ล้านบาท ทุกปีรวมกัน</p></div></div>
+            <div class="chart" id="spThb"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head"><div><h2 id="spTrendTitle">แนวโน้มรายเดือน</h2><p>ตัน ต่อเดือน</p></div><label class="field">ชนิด<select id="spPick"></select></label></div>
+          <div class="chart" id="spTrend" style="min-height:220px"></div>
+        </div>
+      </section>
+
+      <!-- ===================== ENVIRONMENT ===================== -->
+      <section id="environment" hidden>
+        <div class="card">
+          <div class="filters">
+            <label class="field">ภูมิภาค<select id="envRegion"></select></label>
+            <span class="count">ข้อมูลตรวจวัดย้อนหลัง (weather_reports, sea_conditions) เฉลี่ยรายเดือน · เส้นสีเทาคือภูมิภาคอื่น</span>
+          </div>
+        </div>
+        <div class="grid2">
+          <div class="card"><div class="card-head"><div><h2>คลื่นสูงสุดรายวัน เฉลี่ยต่อเดือน</h2><p>เมตร</p></div></div><div class="chart" id="envWave"></div></div>
+          <div class="card"><div class="card-head"><div><h2>ลมสูงสุดรายวัน เฉลี่ยต่อเดือน</h2><p>นอต</p></div></div><div class="chart" id="envWind"></div></div>
+          <div class="card"><div class="card-head"><div><h2>ฝนรายวัน เฉลี่ยต่อเดือน</h2><p>มิลลิเมตรต่อวัน</p></div></div><div class="chart" id="envRain"></div></div>
+          <div class="card"><div class="card-head"><div><h2>อุณหภูมิผิวน้ำทะเล เฉลี่ยต่อเดือน</h2><p>°C · ปี 2565 (2022) ข้อมูลขาดเกือบทั้งปี</p></div></div><div class="chart" id="envSst"></div></div>
+        </div>
+      </section>
+
+      <!-- ===================== EXPORTS ===================== -->
+      <section id="exports" hidden>
+        <div class="kpis" id="exKpis"></div>
+        <div class="card">
+          <div class="card-head"><div><h2>มูลค่าส่งออกรายเดือน</h2><p>ล้านบาท</p></div></div>
+          <div class="chart" id="exTrend" style="min-height:220px"></div>
+        </div>
+        <div class="grid2">
+          <div class="card"><div class="card-head"><div><h2>ตามประเทศปลายทาง</h2><p>มูลค่า ล้านบาท · ไม่แสดงชื่อบริษัทลูกค้า</p></div></div><div class="chart" id="exCountry"></div></div>
+          <div class="card"><div class="card-head"><div><h2>ตามชนิดสัตว์น้ำ</h2><p>มูลค่า ล้านบาท (USD × อัตราแลกเปลี่ยนของคำสั่งซื้อ)</p></div></div><div class="chart" id="exSpecies"></div></div>
+        </div>
+      </section>
+
+      <!-- ===================== MODEL ===================== -->
+      <section id="model" hidden>
+        <div class="kpis" id="mKpis"></div>
+        <div class="grid2">
+          <div class="card">
+            <div class="card-head"><div><h2>อากาศและทะเลช่วยพยากรณ์ไหม</h2><p>โมเดลที่มีและไม่มีฟีเจอร์อากาศ/ทะเล (D-1, เฉลี่ย 3 วัน) · ทดสอบตามเวลา 5 รอบ · ค่าต่ำกว่าดีกว่า</p></div></div>
+            <div class="tbox"><table id="mTests"></table></div>
+            <p class="sub" style="margin-top:10px;font-size:12px">ผลต่างทุกแถวอยู่ในระดับความผันผวนระหว่างรอบ จึงสรุปว่าไม่มีประโยชน์ที่วัดได้กับข้อมูลรายวันระดับโซน</p>
+          </div>
+          <div class="card">
+            <div class="card-head"><div><h2>เที่ยวต่อโซน-วัน ตามคลื่นของวันก่อนหน้า</h2><p>คลื่นสูงสุดวัน D-1 (เมตร)</p></div></div>
+            <div class="chart" id="mWave"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head"><div><h2>สถานะตาม CRISP-DM</h2><p>สิ่งที่ทำแล้วและสิ่งที่ยังขาด</p></div></div>
+          <div class="steps" id="mSteps"></div>
+        </div>
+        <div class="note"><b>ข้อจำกัด</b> ข้อมูลมีเฉพาะเที่ยวเรือที่ออกจริง ยังไม่มีบันทึกการงดออกเรือ จึงยังไม่ควรสร้างโมเดลจำแนก "ควร/ไม่ควรออกเรือ" · ฟีเจอร์ใช้เฉพาะข้อมูลก่อนวันออกเรือเพื่อกัน data leakage · พยากรณ์ใน weather_forcasting เพิ่งเริ่มเก็บ ต้องสะสมหลายเดือนก่อนนำมาเป็นฟีเจอร์</div>
+      </section>
+
+      <!-- ===================== DATA ===================== -->
+      <section id="data" hidden>
+        <div class="grid2">
+          <div class="card">
+            <div class="card-head"><div><h2>Collections ใน MongoDB</h2><p id="dbNote">—</p></div></div>
+            <div class="tbox"><table id="dbTable"></table></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><div><h2>เส้นทางข้อมูล</h2><p>จาก MongoDB ในเครื่อง ถึงหน้าเว็บนี้</p></div></div>
+            <div class="steps" style="grid-template-columns:1fr">
+              <div class="step"><h3>1. Open-Meteo → MongoDB</h3><p>src/09_fetch_forecast.py ดึงพยากรณ์ 7 วันทุกเช้า (Task Scheduler) เก็บทุกรอบใน weather_forcasting</p></div>
+              <div class="step"><h3>2. MongoDB → JSON</h3><p>src/11_export_web_data.py สรุปข้อมูลเป็นไฟล์ใน docs/data/ (อ่านอย่างเดียว ตัดข้อมูลระบุตัวบุคคลออก)</p></div>
+              <div class="step"><h3>3. JSON → GitHub Pages</h3><p>commit และ push โฟลเดอร์ docs/ หน้าเว็บนี้อ่าน JSON ในเบราว์เซอร์ ไม่ได้เชื่อม MongoDB โดยตรง</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="note"><b>ข้อมูลที่ไม่เผยแพร่บนเว็บ</b> ชื่อกัปตัน ชื่อเรือ ชื่อบริษัทลูกค้า และลิงก์ไฟล์รูปภาพ (catch_images) · สำหรับการค้นข้อมูลสดในเครื่อง ใช้ FastAPI (backend/main.py) กับ frontend/index.html</div>
+      </section>
+
+      <footer class="footer"><span>EEC Seafood · ข้อมูลจาก MongoDB ฐาน <span id="ftDb">—</span></span><span id="ftGen">—</span></footer>
+    </div>
+  </main>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

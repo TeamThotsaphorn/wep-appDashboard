@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EEC Seafood | Operations Dashboard</title>
+<style>
+:root{--bg:#f4f7fb;--panel:#fff;--ink:#172b4d;--muted:#718096;--line:#e5ebf3;--nav:#102a43;--blue:#3478f6;--teal:#13a89e;--purple:#7c65d1;--amber:#e5a23b;--red:#dc6262;--green:#259b71;--shadow:0 8px 24px rgba(24,47,84,.06)}*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Inter,"Segoe UI",Tahoma,sans-serif;color:var(--ink)}button,select,input{font:inherit}.app{display:grid;grid-template-columns:244px 1fr;min-height:100vh}.sidebar{background:var(--nav);color:#eaf2fb;padding:24px 16px;display:flex;flex-direction:column;gap:26px}.brand{display:flex;gap:11px;align-items:center;padding:0 8px}.logo{width:40px;height:40px;border-radius:13px;background:linear-gradient(135deg,#35b9b0,#3c80f6);display:grid;place-items:center;font-size:22px}.brand strong{display:block;font-size:15px;letter-spacing:.3px}.brand small{color:#a9bfd5;font-size:11px}.nav-label{color:#7f9ab4;font-size:10px;font-weight:800;letter-spacing:1.4px;padding:0 12px;margin-bottom:8px}.nav{display:grid;gap:5px}.nav button{border:0;background:transparent;color:#b8cadd;text-align:left;padding:12px;border-radius:10px;cursor:pointer;display:flex;gap:12px;align-items:center;font-size:13px}.nav button .ico{width:20px;text-align:center;font-size:16px}.nav button.active,.nav button:hover{background:#203f5e;color:#fff}.side-bottom{margin-top:auto;background:#193954;border:1px solid #2a4a67;padding:14px;border-radius:12px;font-size:12px;color:#c5d7e8;line-height:1.6}.pulse{display:inline-block;width:7px;height:7px;border-radius:50%;background:#e8ad43;margin-right:6px}.main{min-width:0;padding:27px 30px 36px}.topbar{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:22px}.eyebrow{color:var(--blue);font-size:11px;font-weight:800;letter-spacing:1.3px;text-transform:uppercase}.topbar h1{font-size:25px;margin:5px 0 4px;letter-spacing:-.5px}.subtitle{font-size:12px;color:var(--muted)}.top-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.badge{border:1px solid #f0d9a9;background:#fff8e9;color:#92651c;padding:8px 11px;border-radius:9px;font-size:11px;font-weight:700}.btn{border:1px solid var(--line);background:white;border-radius:9px;padding:9px 12px;color:var(--ink);font-size:12px;cursor:pointer}.btn.primary{background:var(--blue);border-color:var(--blue);color:white}.filters{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:white;border:1px solid var(--line);padding:12px;border-radius:13px;margin-bottom:18px;box-shadow:var(--shadow)}.filters label{font-size:11px;color:var(--muted);margin-right:3px}.filters select,.filters input{border:1px solid var(--line);background:#fbfcfe;padding:8px 10px;border-radius:8px;color:var(--ink);font-size:12px}.filter-note{margin-left:auto;color:var(--muted);font-size:11px}.grid{display:grid;gap:16px}.kpis{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:17px}.card{background:var(--panel);border:1px solid var(--line);border-radius:15px;box-shadow:var(--shadow);padding:18px;min-width:0}.kpi-head{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:12px}.kpi-icon{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-size:16px;background:#edf4ff;color:var(--blue)}.kpi-value{font-size:27px;font-weight:750;letter-spacing:-.7px;margin:13px 0 5px}.kpi-foot{font-size:11px;color:var(--muted)}.kpi-foot b{color:var(--green)}.mid-grid{grid-template-columns:1.45fr 1fr;margin-bottom:17px}.bottom-grid{grid-template-columns:1.2fr 1fr;margin-bottom:17px}.card-title{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-bottom:15px}.card-title h2{font-size:14px;margin:0 0 5px}.card-title p{font-size:11px;color:var(--muted);margin:0;line-height:1.5}.mini-tag{font-size:10px;background:#f1f5fa;color:#62758a;padding:5px 8px;border-radius:7px;white-space:nowrap}.chart-wrap{height:220px;position:relative}.chart-wrap canvas{width:100%;height:100%}.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:10px;color:var(--muted);margin-top:7px}.legend span:before{content:"";display:inline-block;width:8px;height:8px;border-radius:3px;background:var(--c);margin-right:5px}.donut-area{display:flex;align-items:center;gap:24px;min-height:210px}.donut{width:156px;height:156px;border-radius:50%;position:relative;flex-shrink:0;background:conic-gradient(var(--green) 0 54%,var(--amber) 54% 82%,#dce4ee 82% 100%)}.donut:after{content:"";position:absolute;inset:24px;background:white;border-radius:50%}.donut-label{position:absolute;inset:0;z-index:1;display:grid;align-content:center;text-align:center}.donut-label strong{font-size:26px}.donut-label small{font-size:10px;color:var(--muted)}.status-list{display:grid;gap:14px;flex:1}.status-row{display:flex;justify-content:space-between;gap:12px;font-size:11px}.status-row span:first-child{color:var(--muted)}.status-row b{font-size:12px}.progress{height:5px;background:#edf1f6;border-radius:9px;overflow:hidden;margin-top:7px}.progress i{display:block;height:100%;border-radius:9px}.table-scroll{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:11px;white-space:nowrap}th{text-align:left;color:#8090a3;font-weight:600;background:#f8fafd;padding:11px 10px;border-bottom:1px solid var(--line)}td{padding:12px 10px;border-bottom:1px solid #eef2f7}tbody tr:last-child td{border-bottom:0}.status{padding:5px 8px;border-radius:6px;font-size:10px;font-weight:700;display:inline-block}.good{background:#e5f7ef;color:#16835d}.warn{background:#fff2d9;color:#98671c}.bad{background:#fdeaea;color:#b64d4d}.neutral{background:#edf3fb;color:#59708b}.zone-list{display:grid;gap:14px}.zone{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center}.zone-name{font-size:12px;font-weight:650}.zone-meta{font-size:10px;color:var(--muted);margin-top:4px}.zone-score{font-size:12px;font-weight:750}.zone .progress{grid-column:1/3;margin-top:0}.section{display:none}.section.active{display:block}.section-intro{margin-bottom:17px}.section-intro h2{margin:0 0 5px;font-size:19px}.section-intro p{margin:0;color:var(--muted);font-size:12px}.empty-note{border:1px dashed #d6e0ec;background:#f9fbfe;border-radius:12px;padding:18px;color:#61758c;font-size:12px;line-height:1.7}.footer{display:flex;justify-content:space-between;gap:12px;color:#8a9aab;font-size:10px;padding:8px 2px}.toast{position:fixed;right:22px;bottom:22px;background:#172b4d;color:white;padding:12px 16px;border-radius:10px;box-shadow:var(--shadow);font-size:12px;display:none;z-index:10}.mobile-menu{display:none}
+@media(max-width:1100px){.app{grid-template-columns:205px 1fr}.main{padding:22px 18px}.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.mid-grid,.bottom-grid{grid-template-columns:1fr}.donut-area{justify-content:flex-start}}
+@media(max-width:700px){.app{display:block}.sidebar{display:none;position:fixed;inset:0 auto 0 0;width:245px;z-index:20;box-shadow:0 0 0 100vw #102a4380}.sidebar.open{display:flex}.main{padding:18px 13px}.topbar{align-items:flex-start}.topbar h1{font-size:21px}.mobile-menu{display:inline-block}.top-actions{justify-content:flex-end}.badge{display:none}.filters{align-items:flex-start}.filter-note{width:100%;margin-left:0}.kpi-value{font-size:23px}.card{padding:14px}.donut-area{gap:15px}.donut{width:125px;height:125px}.donut:after{inset:20px}.footer{flex-direction:column}}
+.pager{display:flex;gap:10px;align-items:center;justify-content:flex-end;margin-top:12px;font-size:11px;color:var(--muted)}.pager .btn:disabled,.btn:disabled{opacity:.5;cursor:not-allowed}.err{color:#b64d4d}.muted{color:var(--muted)}.badge.ok{border-color:#bfe6d6;background:#e5f7ef;color:#16835d}.badge.fail{border-color:#f0c4c4;background:#fdeaea;color:#b64d4d}.table-scroll.tall{max-height:480px;overflow-y:auto}.pulse.ok{background:#35c28f}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar" id="sidebar">
+  <div class="brand"><div class="logo">🌊</div><div><strong>EEC SEAFOOD</strong><small>Marine Operations Intelligence</small></div></div>
+  <div><div class="nav-label">WORKSPACE</div><nav class="nav">
+    <button class="active" data-page="overview"><span class="ico">▦</span>ภาพรวมระบบ</button>
+    <button data-page="trips"><span class="ico">⛴</span>เที่ยวเรือ</button>
+    <button data-page="environment"><span class="ico">🌦</span>อากาศและสภาพทะเล</button>
+    <button data-page="forecasts"><span class="ico">⏱</span>ข้อมูลพยากรณ์ล่วงหน้า</button>
+    <button data-page="zones"><span class="ico">⌖</span>พื้นที่ประมง</button>
+    <button data-page="exports"><span class="ico">📦</span>คำสั่งซื้อส่งออก</button>
+    <button data-page="images"><span class="ico">▧</span>ภาพตรวจสอบสัตว์น้ำ</button>
+  </nav></div>
+  <div><div class="nav-label">DATA PLATFORM</div><nav class="nav"><button data-page="architecture"><span class="ico">◈</span>โครงสร้างข้อมูล</button><button data-page="modeling"><span class="ico">🧠</span>แผน CRISP-DM / Modeling</button></nav></div>
+  <div class="side-bottom"><div><span class="pulse"></span><b id="sideState">กำลังเชื่อมต่อ…</b></div><span id="sideNote">กำลังตรวจสอบ API</span></div>
+</aside>
+<main class="main">
+<header class="topbar"><div><div style="display:flex;gap:8px;align-items:center"><button class="btn mobile-menu" id="menuBtn">☰</button><span class="eyebrow">OPERATIONS OVERVIEW</span></div><h1 id="pageTitle">ภาพรวมการดำเนินงาน</h1><div class="subtitle" id="pageSubtitle">ภาพรวมเที่ยวเรือ สภาพแวดล้อม และการส่งออก • ฐานข้อมูล eec_seafood</div></div><div class="top-actions"><span class="badge" id="apiBadge">● กำลังเชื่อมต่อ…</span><button class="btn" id="exportBtn">⇩ ส่งออก CSV (เที่ยวเรือหน้านี้)</button><button class="btn primary" id="refreshBtn">↻ รีเฟรชข้อมูล</button></div></header>
+<div class="filters"><div><label for="zoneFilter">พื้นที่</label><select id="zoneFilter"><option value="all">ทุกพื้นที่</option></select></div><div><label for="dateFrom">ตั้งแต่วันที่</label><input type="date" id="dateFrom"></div><div><label for="dateTo">ถึงวันที่</label><input type="date" id="dateTo"></div><button class="btn primary" id="applyBtn">ใช้ตัวกรอง</button><button class="btn" id="resetBtn">ล้างตัวกรอง</button><span class="filter-note" id="filterStatus">กำลังโหลดข้อมูล…</span></div>
+<section class="section active" id="overview">
+<div class="grid kpis">
+ <article class="card"><div class="kpi-head">เที่ยวเรือทั้งหมด <span class="kpi-icon">⛴</span></div><div class="kpi-value" id="kTrips">…</div><div class="kpi-foot">เอกสารใน <b>fishing_trips</b></div></article>
+ <article class="card"><div class="kpi-head">พื้นที่ประมง <span class="kpi-icon" style="background:#e4f8f5;color:#13a89e">⌖</span></div><div class="kpi-value" id="kZones">…</div><div class="kpi-foot">เอกสารใน <b>fishing_zones</b></div></article>
+ <article class="card"><div class="kpi-head">คำสั่งซื้อส่งออก <span class="kpi-icon" style="background:#f0ebff;color:#7c65d1">▣</span></div><div class="kpi-value" id="kExports">…</div><div class="kpi-foot">เอกสารใน <b>export_orders</b></div></article>
+ <article class="card"><div class="kpi-head">ข้อมูลภาพสัตว์น้ำ <span class="kpi-icon" style="background:#fff2df;color:#c08425">▧</span></div><div class="kpi-value" id="kImages">…</div><div class="kpi-foot">เอกสารใน <b>catch_images</b></div></article>
+</div>
+<div class="grid mid-grid">
+ <article class="card"><div class="card-title"><div><h2>แนวโน้มเที่ยวเรือและผลจับ</h2><p id="chartSub">กำลังโหลด…</p></div><span class="mini-tag">รายเดือน</span></div><div class="chart-wrap"><canvas id="trendChart" aria-label="กราฟแนวโน้มรายเดือน"></canvas></div><div class="legend"><span style="--c:#3478f6">จำนวนเที่ยวเรือ</span><span style="--c:#13a89e">ผลจับ (ตัน)</span></div></article>
+ <article class="card"><div class="card-title"><div><h2>จำนวนเอกสารแต่ละ Collection</h2><p>นับจาก MongoDB ผ่าน API</p></div><span class="mini-tag">eec_seafood</span></div><div class="status-list" id="collList"><div class="muted">กำลังโหลด…</div></div></article>
+</div>
+<div class="grid bottom-grid">
+ <article class="card"><div class="card-title"><div><h2>เที่ยวเรือล่าสุด</h2><p>5 เที่ยวเรือล่าสุดตามวันออกเรือ (ตามตัวกรอง) · กำไร = ft_profit_thb</p></div><button class="btn" data-goto="trips">ดูทั้งหมด →</button></div><div class="table-scroll"><table><thead><tr><th>Trip ID</th><th>พื้นที่</th><th>วันออกเรือ</th><th>ผลจับ (kg)</th><th>ผลประกอบการ</th></tr></thead><tbody id="tripTable"><tr><td colspan="5" class="muted">กำลังโหลด…</td></tr></tbody></table></div></article>
+ <article class="card"><div class="card-title"><div><h2>พื้นที่ประมง</h2><p>ข้อมูลจาก fishing_zones</p></div><button class="btn" data-goto="zones">ดูพื้นที่ →</button></div><div class="zone-list" id="zoneListOv"><div class="muted">กำลังโหลด…</div></div></article>
+</div>
+</section>
+<section class="section" id="trips"><div class="section-intro"><h2>เที่ยวเรือ (Fishing Trips)</h2><p>ข้อมูลจริงจาก fishing_trips ผ่าน API • ตัวกรองด้านบนมีผลกับตารางและจำนวนเที่ยวเรือ</p></div><div class="grid kpis"><article class="card"><div class="kpi-head">เที่ยวเรือตามตัวกรอง</div><div class="kpi-value" id="kTripsF">…</div><div class="kpi-foot">นับเอกสารที่ตรงเงื่อนไข</div></article><article class="card"><div class="kpi-head">ผลจับรวม (kg)</div><div class="kpi-value" id="kCatch">…</div><div class="kpi-foot">ทั้งฐานข้อมูล · ft_total_catch_kg</div></article><article class="card"><div class="kpi-head">รายได้รวม (฿)</div><div class="kpi-value" id="kRevenue">…</div><div class="kpi-foot">ทั้งฐานข้อมูล · ft_revenue_thb</div></article><article class="card"><div class="kpi-head">กำไรรวม (฿)</div><div class="kpi-value" id="kProfit">…</div><div class="kpi-foot">ทั้งฐานข้อมูล · ft_profit_thb</div></article></div><article class="card"><div class="card-title"><div><h2>รายการเที่ยวเรือ</h2><p>เรียงจากวันออกเรือล่าสุด · หน้าละ 20 รายการ</p></div><span class="mini-tag">fishing_trips</span></div><div class="table-scroll"><table><thead><tr><th>Trip ID</th><th>เรือ</th><th>พื้นที่</th><th>ออกเรือ</th><th>กลับ</th><th>ลูกเรือ</th><th>ผลจับ (kg)</th><th>รายได้ (฿)</th><th>กำไร (฿)</th></tr></thead><tbody id="tripsBody"><tr><td colspan="9" class="muted">กำลังโหลด…</td></tr></tbody></table></div><div class="pager"><button class="btn" id="tripPrev">← ก่อนหน้า</button><span id="tripPageInfo">—</span><button class="btn" id="tripNext">ถัดไป →</button></div></article></section>
+<section class="section" id="environment"><div class="section-intro"><h2>อากาศและสภาพทะเล</h2><p>ข้อมูลสังเกตการณ์ย้อนหลังจาก weather_reports และ sea_conditions (ไม่ใช่ข้อมูลสด) • ข้อมูลพยากรณ์อยู่ในหน้า "ข้อมูลพยากรณ์ล่วงหน้า"</p></div><div class="grid kpis"><article class="card"><div class="kpi-head">รายงานอากาศ</div><div class="kpi-value" id="kWx">…</div><div class="kpi-foot">weather_reports</div></article><article class="card"><div class="kpi-head">รายงานสภาพทะเล</div><div class="kpi-value" id="kSea">…</div><div class="kpi-foot">sea_conditions</div></article><article class="card"><div class="kpi-head">วันที่สังเกตการณ์ล่าสุด</div><div class="kpi-value" style="font-size:22px" id="kObsLast">…</div><div class="kpi-foot">ตามตัวกรองปัจจุบัน</div></article><article class="card"><div class="kpi-head">แถวพยากรณ์ใน MongoDB</div><div class="kpi-value" id="kFc2">…</div><div class="kpi-foot">weather_forcasting · ดูในหน้าพยากรณ์</div></article></div><div class="grid mid-grid"><article class="card"><div class="card-title"><div><h2>สภาพอากาศ (สังเกตการณ์)</h2><p>weather_reports · อ้างสถานีอากาศของพื้นที่ที่เลือก</p></div></div><div class="table-scroll"><table><thead><tr><th>สถานี</th><th>จังหวัด</th><th>วันที่</th><th>ฝน (mm)</th><th>Tmax</th><th>Tmin</th><th>ลมสูงสุด (kn)</th><th>ความชื้น %</th></tr></thead><tbody id="envWx"><tr><td colspan="8" class="muted">กำลังโหลด…</td></tr></tbody></table></div></article><article class="card"><div class="card-title"><div><h2>สภาพทะเล (สังเกตการณ์)</h2><p>sea_conditions</p></div></div><div class="table-scroll"><table><thead><tr><th>พื้นที่</th><th>วันที่</th><th>คลื่น (m)</th><th>Swell (m)</th><th>คาบ (s)</th><th>ทิศ °</th><th>SST °C</th><th>กระแส km/h</th></tr></thead><tbody id="envSea"><tr><td colspan="8" class="muted">กำลังโหลด…</td></tr></tbody></table></div></article></div><div class="empty-note"><span id="envNote">กำลังโหลด…</span><br>ข้อควรระวัง: ข้อมูลในหน้านี้เป็นค่าสังเกตการณ์ย้อนหลัง ไม่ใช่ประกาศเตือนภัยหรือการประเมินความปลอดภัยในการเดินเรือ ให้ใช้ประกาศทางการของกรมอุตุนิยมวิทยาประกอบการตัดสินใจ ค่าที่ว่างแสดงว่าไม่มีข้อมูลในฐานข้อมูล</div></section>
+
+<section class="section" id="forecasts"><div class="section-intro"><h2>ข้อมูลพยากรณ์ล่วงหน้า</h2><p>พยากรณ์ 7 วันจาก Open-Meteo ที่ src/09_fetch_forecast.py ดึงมาเก็บใน weather_forcasting • เป็นค่าพยากรณ์ ไม่ใช่ค่าที่วัดได้จริง</p></div><div class="grid kpis"><article class="card"><div class="kpi-head">Collection</div><div class="kpi-value" style="font-size:22px">weather_forcasting</div><div class="kpi-foot">รวมคลื่น ลม ฝนใน collection เดียว</div></article><article class="card"><div class="kpi-head">แถวพยากรณ์ (ตามตัวกรองพื้นที่)</div><div class="kpi-value" id="kFcCount">…</div><div class="kpi-foot">เฉพาะรอบที่ดึงล่าสุด</div></article><article class="card"><div class="kpi-head">รอบพยากรณ์ล่าสุด</div><div class="kpi-value" style="font-size:22px" id="kFcIssue">…</div><div class="kpi-foot" id="kFcRuns">fc_issue_date</div></article><article class="card"><div class="kpi-head">ดึงข้อมูลล่าสุดเมื่อ</div><div class="kpi-value" style="font-size:17px" id="kFcFetched">…</div><div class="kpi-foot">fc_fetched_at (เวลา UTC)</div></article></div><article class="card"><div class="card-title"><div><h2>พยากรณ์รายพื้นที่</h2><p>fc_forecast_date = วันที่พยากรณ์สำหรับ · fc_issue_date = รอบที่ออกพยากรณ์ · fc_fetched_at = เวลาที่ระบบดึงข้อมูล</p></div><span class="mini-tag">Open-Meteo</span></div><div class="table-scroll tall"><table><thead><tr><th>พื้นที่</th><th>วันที่พยากรณ์สำหรับ</th><th>คลื่นสูงสุด (m)</th><th>คาบคลื่น (s)</th><th>ลมสูงสุด (kn)</th><th>ฝน (mm)</th><th>ดึงเมื่อ</th></tr></thead><tbody id="fcBody"><tr><td colspan="7" class="muted">กำลังโหลด…</td></tr></tbody></table></div></article><div class="empty-note" style="margin-top:17px"><b>หลักการเก็บข้อมูลเป็นรอบ</b><br>เก็บ 1 เอกสารต่อ (พื้นที่, วันที่พยากรณ์สำหรับ, วันที่ออกพยากรณ์) จึงเก็บประวัติของแต่ละรอบไว้ได้และไม่เขียนทับรอบเก่า ข้อมูลนี้เป็นค่าพยากรณ์จากแบบจำลอง ไม่ใช่คำแนะนำด้านความปลอดภัยในการเดินเรือ ให้ตรวจประกาศทางการของกรมอุตุนิยมวิทยาก่อนออกเรือเสมอ</div></section>
+<section class="section" id="modeling">
+ <div class="section-intro"><h2>แผน CRISP-DM และ Modeling</h2><p>ออกแบบไว้สำหรับเทอมนี้ ยังไม่ฝึกโมเดลจริง • แหล่งข้อมูลสำหรับโมเดลคือ MongoDB เท่านั้น</p></div>
+ <div class="grid kpis"><article class="card"><div class="kpi-head">ขั้นตอน CRISP-DM</div><div class="kpi-value">6</div><div class="kpi-foot">กรอบงานครบ 6 ขั้นตอน</div></article><article class="card"><div class="kpi-head">แหล่งข้อมูล</div><div class="kpi-value" style="font-size:22px">MongoDB</div><div class="kpi-foot">ไม่ดึงข้อมูลจาก MySQL มาฝึกโมเดล</div></article><article class="card"><div class="kpi-head">โมเดลหลัก (ข้อเสนอ)</div><div class="kpi-value" style="font-size:22px">Regression</div><div class="kpi-foot">ต้องยืนยัน Target ก่อน</div></article><article class="card"><div class="kpi-head">สถานะ</div><div class="kpi-value" style="font-size:22px">Planning</div><div class="kpi-foot">ยังไม่ทำ Training</div></article></div>
+ <div class="grid mid-grid"><article class="card"><div class="card-title"><div><h2>6 ขั้นตอน CRISP-DM</h2><p>ขอบเขตงานเบื้องต้น</p></div></div><div class="zone-list"><div class="zone"><div><div class="zone-name">1. Business Understanding</div><div class="zone-meta">กำหนดเป้าหมาย: ช่วยประเมินพื้นที่และช่วงเวลาออกเรือ</div></div></div><div class="zone"><div><div class="zone-name">2. Data Understanding</div><div class="zone-meta">ตรวจฟิลด์ เวลา หน่วย ความครบถ้วน และความสัมพันธ์ของ 7 collections</div></div></div><div class="zone"><div><div class="zone-name">3. Data Preparation</div><div class="zone-meta">รวม forecast ตามพื้นที่และเวลาที่สัมพันธ์กับเที่ยวเรือ ป้องกันข้อมูลรั่วไหล</div></div></div><div class="zone"><div><div class="zone-name">4. Modeling</div><div class="zone-meta">เลือก Features/Target แบ่ง train-test ตามเวลา ฝึก baseline และโมเดลเปรียบเทียบ</div></div></div><div class="zone"><div><div class="zone-name">5. Evaluation</div><div class="zone-meta">Regression: MAE/RMSE/R²; ตรวจผลเทียบ baseline และเป้าหมายธุรกิจ</div></div></div><div class="zone"><div><div class="zone-name">6. Deployment</div><div class="zone-meta">ภายหลังเชื่อมโมเดลกับ API และแสดงผลใน Dashboard พร้อมติดตามคุณภาพ</div></div></div></div></article>
+ <article class="card"><div class="card-title"><div><h2>แนวทางโมเดลที่เสนอ</h2><p>ต้องตรวจสอบความพร้อมของข้อมูลก่อนตัดสินใจ</p></div></div><div class="empty-note"><b>ตัวเลือก A — พยากรณ์ปริมาณสัตว์น้ำ</b><br>Target: ปริมาณจับต่อเที่ยวเรือจาก fishing_trips/catches<br>Features ที่เป็นไปได้: พื้นที่ เรือ และค่าพยากรณ์อากาศ/ทะเลก่อนออกเรือ<br>โมเดลเริ่มต้น: Linear Regression เทียบ Random Forest Regressor<br><br><b>ตัวเลือก B — คะแนนความเหมาะสมของพื้นที่</b><br>เริ่มจากเกณฑ์ Rule-based ที่อ้างอิงได้ก่อน ไม่เรียกว่า Machine Learning จนกว่าจะมี Target ที่เชื่อถือได้<br><br><b>ข้อจำกัดสำคัญ</b><br>หากไม่มีตัวอย่างเที่ยวเรือที่ยกเลิกหรือไม่ออกเรือ ยังไม่ควรฝึก Classification เพื่อทำนาย “ควรออกเรือ/ไม่ควรออกเรือ”</div></article></div>
+ <article class="card"><div class="card-title"><div><h2>Checklist ก่อนเริ่มทำโมเดลในเทอมถัดไป</h2><span class="mini-tag">Planning checklist</span></div></div><div class="checklist"><label><input type="checkbox"> ตรวจ schema จริงของ weather_forcasting (พบ collection นี้ ไม่มี weather_forecasts/marine_forecasts)</label><label><input type="checkbox"> ยืนยันหน่วยและ timezone ของทุกฟิลด์เวลา</label><label><input type="checkbox"> กำหนด Target และ Grain ของ Dataset</label><label><input type="checkbox"> ตรวจว่ามีข้อมูลย้อนหลังจับคู่กับเที่ยวเรือได้เพียงพอ</label><label><input type="checkbox"> กำหนดวิธีแบ่งข้อมูลตามเวลาและ metrics</label><label><input type="checkbox"> บันทึกข้อจำกัดและแหล่งที่มาของข้อมูล</label></div></article>
+ <div class="empty-note">หมายเหตุ: ข้อมูลพยากรณ์ใน Dashboard มาจาก Open-Meteo ตามที่เก็บใน MongoDB ไม่ใช่คำแนะนำด้านความปลอดภัยในการเดินเรือ</div>
+</section>
+
+<section class="section" id="zones"><div class="section-intro"><h2>พื้นที่ประมง</h2><p>ข้อมูลพื้นที่และตำแหน่งอ้างอิงจาก fishing_zones</p></div><div class="grid kpis"><article class="card"><div class="kpi-head">พื้นที่ทั้งหมด</div><div class="kpi-value" id="kZ1">…</div><div class="kpi-foot">นับเอกสารใน fishing_zones</div></article><article class="card"><div class="kpi-head">จังหวัด</div><div class="kpi-value" id="kZprov">…</div><div class="kpi-foot">fz_province ที่ไม่ซ้ำ (ไม่นับค่าว่าง)</div></article><article class="card"><div class="kpi-head">มีพิกัด</div><div class="kpi-value" id="kZcoord">…</div><div class="kpi-foot">มี fz_latitude / fz_longitude</div></article><article class="card"><div class="kpi-head">ความลึกเฉลี่ย</div><div class="kpi-value" id="kZdepth">…</div><div class="kpi-foot">เฉลี่ยจาก fz_depth_m</div></article></div><article class="card"><div class="card-title"><div><h2>ฟิลด์ข้อมูลพื้นที่</h2><p>fishing_zones</p></div></div><div class="empty-note">fz_zone_id, fz_zone_name, fz_province, fz_region, fz_latitude, fz_longitude, fz_depth_m, fz_main_species, fz_nearest_port และ fz_weather_station_id</div></article><article class="card" style="margin-top:17px"><div class="card-title"><div><h2>รายการพื้นที่ประมง</h2><p>ทั้งหมดจาก fishing_zones</p></div><span class="mini-tag">fishing_zones</span></div><div class="table-scroll tall"><table><thead><tr><th>รหัส</th><th>ชื่อพื้นที่</th><th>จังหวัด</th><th>ภูมิภาคทะเล</th><th>พิกัด (lat, lon)</th><th>ความลึก (m)</th><th>ท่าเรือใกล้สุด</th><th>สถานีอากาศ</th></tr></thead><tbody id="zonesBody"><tr><td colspan="8" class="muted">กำลังโหลด…</td></tr></tbody></table></div></article></section>
+<section class="section" id="exports"><div class="section-intro"><h2>คำสั่งซื้อส่งออก</h2><p>ติดตามลูกค้า รายการสินค้า น้ำหนัก และมูลค่าคำสั่งซื้อ</p></div><div class="grid kpis"><article class="card"><div class="kpi-head">คำสั่งซื้อ</div><div class="kpi-value" id="kEx1">…</div><div class="kpi-foot">นับเอกสารใน export_orders</div></article><article class="card"><div class="kpi-head">น้ำหนักรวม (kg)</div><div class="kpi-value" id="kEx2">…</div><div class="kpi-foot">รวม eo_total_weight_kg</div></article><article class="card"><div class="kpi-head">มูลค่า (USD)</div><div class="kpi-value" id="kEx3">…</div><div class="kpi-foot">รวม eo_total_value_usd</div></article><article class="card"><div class="kpi-head">มูลค่า (THB)</div><div class="kpi-value" id="kEx4">…</div><div class="kpi-foot">รวม eo_total_value_thb</div></article></div><article class="card"><div class="card-title"><div><h2>โครงสร้างรายการส่งออก</h2><p>export_orders</p></div></div><div class="empty-note">eo_order_id, eo_order_date, eo_customer, eo_items[], eo_total_weight_kg, eo_exchange_rate, eo_total_value_usd และ eo_total_value_thb</div></article><div class="empty-note" style="margin-top:17px" id="exNote">กำลังโหลด…</div></section>
+<section class="section" id="images"><div class="section-intro"><h2>ภาพตรวจสอบสัตว์น้ำ</h2><p>แสดงข้อมูลเมทาดาทาของภาพ ไม่ใช่ตัวไฟล์ภาพโดยตรง</p></div><div class="grid kpis"><article class="card"><div class="kpi-head">เอกสารภาพ</div><div class="kpi-value" id="kIm1">…</div><div class="kpi-foot">catch_images</div></article><article class="card"><div class="kpi-head">มีคำอธิบาย</div><div class="kpi-value" id="kIm2">…</div><div class="kpi-foot">มี ci_description</div></article><article class="card"><div class="kpi-head">มี File URL</div><div class="kpi-value" id="kIm3">…</div><div class="kpi-foot">มี ci_file_url</div></article><article class="card"><div class="kpi-head">ผูกกับเที่ยวเรือ</div><div class="kpi-value" id="kIm4">…</div><div class="kpi-foot">มี ci_trip_id</div></article></div><article class="card"><div class="card-title"><div><h2>ข้อมูลสำหรับแสดงภาพ</h2><p>catch_images</p></div></div><div class="empty-note">ci_image_id, ci_trip_id, ci_species_ids, ci_stage, ci_taken_at, ci_description, ci_source, ci_file_id, ci_file_name, ci_file_url, ci_mime_type, ci_file_size_kb และ ci_uploaded_at</div></article><article class="card" style="margin-top:17px"><div class="card-title"><div><h2>รายการภาพ</h2><p>เมทาดาทาเท่านั้น · ไม่ดึงลิงก์ไฟล์มาแสดงในหน้านี้ · เวลาถ่ายแสดงตามที่เก็บในฐานข้อมูล</p></div><span class="mini-tag">catch_images</span></div><div class="table-scroll tall"><table><thead><tr><th>Image ID</th><th>Trip</th><th>ขั้นตอน</th><th>ชนิด</th><th>เวลาถ่าย</th><th>ขนาด (KB)</th><th>มีลิงก์ไฟล์</th><th>คำอธิบาย</th></tr></thead><tbody id="imgBody"><tr><td colspan="8" class="muted">กำลังโหลด…</td></tr></tbody></table></div></article></section>
+<section class="section" id="architecture"><div class="section-intro"><h2>โครงสร้างข้อมูลและการเชื่อมต่อ</h2><p>Collections จริงใน MongoDB และสถาปัตยกรรมที่ใช้งานอยู่</p></div><div class="grid mid-grid"><article class="card"><div class="card-title"><div><h2>Collections ใน eec_seafood</h2><p>จำนวนเอกสารนับสดจาก MongoDB ผ่าน API</p></div></div><div class="zone-list" id="archList"><div class="muted">กำลังโหลด…</div></div></article><article class="card"><div class="card-title"><div><h2>สถาปัตยกรรมที่ใช้งานอยู่</h2><p>Dashboard → FastAPI → MongoDB</p></div></div><div class="empty-note"><b>1. Backend API</b><br>FastAPI (backend/main.py) อ่านข้อมูลอย่างเดียว ไม่มี URI/รหัสผ่านในหน้าเว็บ และจำกัดจำนวนรายการต่อหน้า<br><br><b>2. Data validation</b><br>API ตรวจพารามิเตอร์ (หน้า ช่วงวันที่) ค่าที่ว่างใน DB ถูกแสดงเป็น "ไม่มีข้อมูล" ไม่ถูกแทนด้วย 0<br><br><b>3. Refresh</b><br>โหลดตอนเปิดหน้าและเมื่อกดปุ่มรีเฟรช ยังไม่มีการดึงอัตโนมัติ<br><br><b>4. Forecast data</b><br>src/09_fetch_forecast.py ดึงพยากรณ์จาก Open-Meteo ไปเก็บใน weather_forcasting เป็นรอบ (รันแยกต่างหาก)</div></article></div><div class="empty-note">เบราว์เซอร์เรียก API ที่ http://127.0.0.1:8000 เท่านั้น ไม่เชื่อมต่อ MongoDB โดยตรง ต้องเปิดหน้านี้ผ่าน HTTP server ในเครื่อง (เช่น พอร์ต 5500) ไม่ใช่ file://</div></section>
+<div class="footer"><span>© EEC Seafood Operations Dashboard</span><span id="lastUpdated">ยังไม่ได้โหลดข้อมูล</span></div>
+</main></div><div class="toast" id="toast"></div>
+<script>
+const pages={overview:['ภาพรวมการดำเนินงาน','ภาพรวมเที่ยวเรือ สภาพแวดล้อม และการส่งออก • ฐานข้อมูล eec_seafood'],trips:['เที่ยวเรือ','ข้อมูลเที่ยวเรือ เรือ กัปตัน ผลจับ ต้นทุน และผลประกอบการ'],environment:['อากาศและสภาพทะเล','ข้อมูลสังเกตการณ์ย้อนหลังจาก weather_reports และ sea_conditions'],forecasts:['ข้อมูลพยากรณ์ล่วงหน้า','พยากรณ์จาก Open-Meteo ที่เก็บเป็นรอบใน weather_forcasting'],modeling:['แผน CRISP-DM / Modeling','แผนงานสำหรับเทอมถัดไป ยังไม่ฝึกโมเดลจริง'],zones:['พื้นที่ประมง','ข้อมูลพื้นที่ พิกัด ความลึก และชนิดสัตว์น้ำหลัก'],exports:['คำสั่งซื้อส่งออก','ลูกค้า รายการสินค้า น้ำหนัก และมูลค่าคำสั่งซื้อ'],images:['ภาพตรวจสอบสัตว์น้ำ','เมทาดาทาภาพและข้อมูลไฟล์ที่เกี่ยวข้องกับเที่ยวเรือ'],architecture:['โครงสร้างข้อมูล','Collections จริงและสถาปัตยกรรมที่ใช้งานอยู่']};
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.style.display='block';clearTimeout(window.tt);window.tt=setTimeout(()=>t.style.display='none',3000)}
+function go(page){document.querySelectorAll('.section').forEach(s=>s.classList.toggle('active',s.id===page));document.querySelectorAll('.nav button[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===page));document.getElementById('pageTitle').textContent=pages[page][0];document.getElementById('pageSubtitle').textContent=pages[page][1];document.querySelector('.eyebrow').textContent=page==='overview'?'OPERATIONS OVERVIEW':'EEC SEAFOOD / '+page.toUpperCase();document.getElementById('sidebar').classList.remove('open');window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('.nav button[data-page]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.page)));document.querySelectorAll('[data-goto]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.goto)));document.getElementById('menuBtn').addEventListener('click',()=>document.getElementById('sidebar').classList.toggle('open'));
+const API=window.EEC_API_BASE||'http://127.0.0.1:8000';
+const TRIP_PAGE_SIZE=20;
+const S={loading:false,tripBusy:false,tripPage:1,tripPages:1,tripRows:[],zones:[]};
+const $=id=>document.getElementById(id);
+const esc=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const NA='ไม่มีข้อมูล';
+const nf=(v,d=0)=>(v==null||isNaN(v))?NA:Number(v).toLocaleString('th-TH',{minimumFractionDigits:d,maximumFractionDigits:d});
+const day=v=>v?String(v).slice(0,10):NA;
+const utc=v=>v?String(v).slice(0,16).replace('T',' ')+' UTC':NA;
+const txt=v=>(v==null||v==='')?NA:esc(v);
+const kv=(id,v)=>{const el=$(id);if(el)el.textContent=v};
+const TH_MONTHS=['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'];
+const COLL_DESC={fishing_trips:'เที่ยวเรือ ผลจับ ต้นทุน และกำไร',fishing_zones:'ข้อมูลอ้างอิงพื้นที่ประมง',weather_reports:'รายงานสภาพอากาศ (สังเกตการณ์)',sea_conditions:'สภาพน้ำทะเล (สังเกตการณ์)',weather_forcasting:'พยากรณ์ 7 วันจาก Open-Meteo เก็บเป็นรอบ',export_orders:'คำสั่งซื้อส่งออก',catch_images:'เมทาดาทาภาพ'};
+
+async function api(path,params){
+  const u=new URL(API+path);
+  Object.entries(params||{}).forEach(([k,v])=>{if(v!==''&&v!=null&&v!=='all')u.searchParams.set(k,v)});
+  let r;
+  try{r=await fetch(u)}catch(e){throw new Error('ติดต่อ API ที่ '+API+' ไม่ได้ ตรวจสอบว่า backend ทำงานอยู่')}
+  if(!r.ok){let m='API ตอบกลับ HTTP '+r.status;try{const j=await r.json();if(typeof j.detail==='string')m=j.detail}catch(e){}throw new Error(m)}
+  return r.json();
+}
+const filters=()=>({zone_id:$('zoneFilter').value,date_from:$('dateFrom').value,date_to:$('dateTo').value});
+const fail=(id,cols,e)=>{$(id).innerHTML=`<tr><td colspan="${cols}" class="err">โหลดข้อมูลไม่สำเร็จ: ${esc(e.message)}</td></tr>`};
+function fill(id,rows,cols,render,empty){
+  $(id).innerHTML=(rows&&rows.length)?rows.map(render).join(''):`<tr><td colspan="${cols}" class="muted">${empty||'ไม่พบข้อมูลตามเงื่อนไขที่เลือก'}</td></tr>`;
+}
+const TABLES={tripTable:5,tripsBody:9,envWx:8,envSea:8,fcBody:7,zonesBody:8,imgBody:8};
+const KPI_IDS=['kTrips','kZones','kExports','kImages','kTripsF','kCatch','kRevenue','kProfit','kWx','kSea','kObsLast','kFc2','kFcCount','kFcIssue','kFcFetched','kZ1','kZprov','kZcoord','kZdepth','kEx1','kEx2','kEx3','kEx4','kIm1','kIm2','kIm3','kIm4'];
+
+function setBadge(state,e){
+  const b=$('apiBadge');
+  b.className='badge'+(state==='ok'?' ok':state==='fail'?' fail':'');
+  b.textContent=state==='ok'?'● เชื่อมต่อ MongoDB ผ่าน API แล้ว':state==='fail'?'● เชื่อมต่อไม่ได้':'● กำลังเชื่อมต่อ…';
+  kv('sideState',state==='ok'?'เชื่อมต่อแล้ว':state==='fail'?'เชื่อมต่อไม่ได้':'กำลังเชื่อมต่อ…');
+  kv('sideNote',state==='fail'?(e&&e.message||''):'ข้อมูลมาจาก MongoDB ผ่าน API ที่ '+API+' เบราว์เซอร์ไม่ได้เชื่อม MongoDB โดยตรง');
+}
+function failAll(e){
+  KPI_IDS.forEach(id=>kv(id,'—'));
+  Object.entries(TABLES).forEach(([id,c])=>fail(id,c,e));
+  ['collList','zoneListOv','archList'].forEach(id=>{$(id).innerHTML=`<div class="err">โหลดข้อมูลไม่สำเร็จ: ${esc(e.message)}</div>`});
+  chartData=[];drawChart();kv('chartSub','โหลดข้อมูลไม่สำเร็จ');
+}
+
+function renderSummary(s){
+  const c=s.counts,t=s.trips;
+  kv('kTrips',nf(c.fishing_trips));kv('kZones',nf(c.fishing_zones));kv('kExports',nf(c.export_orders));kv('kImages',nf(c.catch_images));
+  kv('kCatch',nf(t.total_catch_kg));kv('kRevenue',nf(t.total_revenue_thb));kv('kProfit',nf(t.total_profit_thb));
+  kv('kWx',nf(c.weather_reports));kv('kSea',nf(c.sea_conditions));kv('kFc2',nf(c.weather_forcasting));
+  kv('kZ1',nf(c.fishing_zones));kv('kIm1',nf(c.catch_images));kv('kEx1',nf(c.export_orders));
+  const names=Object.keys(c);
+  $('collList').innerHTML=names.map(n=>`<div><div class="status-row"><span>${esc(n)}</span><b>${nf(c[n])}</b></div></div>`).join('')
+    +`<div class="empty-note">เที่ยวเรือครอบคลุมวันออกเรือ ${day(t.departure_range.first)} ถึง ${day(t.departure_range.last)}</div>`;
+  $('archList').innerHTML=names.map(n=>`<div class="zone"><div class="zone-name">${esc(n)}</div><div class="zone-score">${nf(c[n])} docs</div><div class="zone-meta">${esc(COLL_DESC[n]||'')}</div></div>`).join('');
+}
+
+async function loadZones(){
+  try{
+    const r=await api('/api/zones');S.zones=r.items;
+    const sel=$('zoneFilter'),cur=sel.value;
+    sel.innerHTML='<option value="all">ทุกพื้นที่</option>'+r.items.map(z=>`<option value="${esc(z.fz_zone_id)}">${esc(z.fz_zone_name)} (${esc(z.fz_province||'ไม่ระบุจังหวัด')})</option>`).join('');
+    sel.value=[...sel.options].some(o=>o.value===cur)?cur:'all';
+    $('zoneListOv').innerHTML=r.items.slice(0,5).map(z=>`<div class="zone"><div><div class="zone-name">${esc(z.fz_zone_name)}</div><div class="zone-meta">${esc(z.fz_province||'ไม่ระบุจังหวัด')} · ท่าเรือใกล้สุด ${txt(z.fz_nearest_port)}</div></div><div class="zone-score">${z.fz_depth_m==null?NA:esc(z.fz_depth_m)+' m'}</div></div>`).join('')
+      +`<div class="muted" style="font-size:11px">แสดง 5 จาก ${r.total} พื้นที่ · ดูทั้งหมดในหน้า "พื้นที่ประมง"</div>`;
+    const provs=new Set(r.items.map(z=>z.fz_province).filter(Boolean));
+    const withCoord=r.items.filter(z=>z.fz_latitude!=null&&z.fz_longitude!=null).length;
+    const depths=r.items.map(z=>z.fz_depth_m).filter(v=>typeof v==='number');
+    kv('kZprov',nf(provs.size));kv('kZcoord',nf(withCoord)+' / '+nf(r.total));
+    kv('kZdepth',depths.length?nf(depths.reduce((a,b)=>a+b,0)/depths.length,1)+' m':NA);
+    fill('zonesBody',r.items,8,z=>`<tr><td>${esc(z.fz_zone_id)}</td><td>${txt(z.fz_zone_name)}</td><td>${txt(z.fz_province)}</td><td>${txt(z.fz_region&&z.fz_region.rg_region_name)}</td><td>${nf(z.fz_latitude,2)}, ${nf(z.fz_longitude,2)}</td><td>${nf(z.fz_depth_m)}</td><td>${txt(z.fz_nearest_port)}</td><td>${txt(z.fz_weather_station_id)}</td></tr>`);
+  }catch(e){
+    $('zoneListOv').innerHTML=`<div class="err">โหลดไม่สำเร็จ: ${esc(e.message)}</div>`;fail('zonesBody',8,e);
+  }
+}
+
+const profitCell=v=>v==null?NA:`<span class="status ${v>=0?'good':'bad'}">${v>=0?'+':''}${nf(v)}</span>`;
+async function loadRecent(){
+  try{
+    const r=await api('/api/trips',{page_size:5,...filters()});
+    fill('tripTable',r.items,5,t=>`<tr><td>${txt(t.ft_trip_id)}</td><td>${txt(t.ft_zone&&t.ft_zone.fz_zone_name)}</td><td>${day(t.ft_departure_date)}</td><td>${nf(t.ft_total_catch_kg,1)}</td><td>${profitCell(t.ft_profit_thb)}</td></tr>`);
+  }catch(e){fail('tripTable',5,e)}
+}
+async function loadTrips(){
+  if(S.tripBusy)return;S.tripBusy=true;let retry=false;
+  $('tripPrev').disabled=$('tripNext').disabled=true;
+  try{
+    const r=await api('/api/trips',{page:S.tripPage,page_size:TRIP_PAGE_SIZE,...filters()});
+    S.tripRows=r.items;S.tripPages=Math.max(1,Math.ceil(r.total/TRIP_PAGE_SIZE));
+    if(S.tripPage>S.tripPages){S.tripPage=S.tripPages;retry=true}
+    kv('kTripsF',nf(r.total));
+    fill('tripsBody',r.items,9,t=>{const v=t.ft_vessel||{};return `<tr><td>${txt(t.ft_trip_id)}</td><td>${txt(v.ve_vessel_name)} <span class="muted">${txt(v.ve_gear_type)} · ${v.ve_size_gt==null?NA:esc(v.ve_size_gt)+' GT'}</span></td><td>${txt(t.ft_zone&&t.ft_zone.fz_zone_name)}</td><td>${day(t.ft_departure_date)}</td><td>${day(t.ft_return_date)}</td><td>${nf(t.ft_crew_count)}</td><td>${nf(t.ft_total_catch_kg,1)}</td><td>${nf(t.ft_revenue_thb)}</td><td>${profitCell(t.ft_profit_thb)}</td></tr>`});
+    kv('tripPageInfo',`หน้า ${S.tripPage} / ${S.tripPages} · ทั้งหมด ${nf(r.total)} เที่ยว`);
+  }catch(e){S.tripRows=[];fail('tripsBody',9,e);kv('kTripsF','—');kv('tripPageInfo','—')}
+  finally{S.tripBusy=false;$('tripPrev').disabled=S.tripPage<=1;$('tripNext').disabled=S.tripPage>=S.tripPages;if(retry)loadTrips()}
+}
+
+let chartData=[];
+async function loadChart(sum){
+  try{
+    const last=sum.trips.departure_range.last;
+    if(!last){chartData=[];drawChart();kv('chartSub','ไม่มีข้อมูลเที่ยวเรือ');return}
+    const s=new Date(+last.slice(0,4),+last.slice(5,7)-1-11,1);
+    const from=`${s.getFullYear()}-${String(s.getMonth()+1).padStart(2,'0')}-01`;
+    const r=await api('/api/trips/monthly',{zone_id:$('zoneFilter').value,date_from:from});
+    chartData=r.items;drawChart();
+    kv('chartSub',`12 เดือนล่าสุดของข้อมูล (ถึง ${last.slice(0,7)}) · จำนวนเที่ยวเรือแกนซ้าย, ผลจับ (ตัน) แกนขวา · กรองตามพื้นที่ ไม่กรองตามวันที่`);
+  }catch(e){chartData=[];drawChart();kv('chartSub','โหลดกราฟไม่สำเร็จ: '+e.message)}
+}
+function drawChart(){
+  const c=$('trendChart');if(!c)return;
+  const rect=c.getBoundingClientRect();if(!rect.width)return;
+  const ctx=c.getContext('2d'),dpr=window.devicePixelRatio||1;
+  c.width=rect.width*dpr;c.height=rect.height*dpr;ctx.scale(dpr,dpr);
+  const w=rect.width,h=rect.height;ctx.clearRect(0,0,w,h);
+  ctx.font='10px Segoe UI, Tahoma';
+  if(!chartData.length){ctx.fillStyle='#8292a5';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(NA,w/2,h/2);return}
+  const pad={l:40,r:44,t:12,b:27},cw=w-pad.l-pad.r,ch=h-pad.t-pad.b;
+  const trips=chartData.map(d=>d.trips),tons=chartData.map(d=>(d.total_catch_kg||0)/1000);
+  const nice=m=>{const p=Math.pow(10,Math.floor(Math.log10(m||1)));const f=m/p;return (f<=1?1:f<=2?2:f<=5?5:10)*p};
+  const maxL=nice(Math.max(...trips,1)),maxR=nice(Math.max(...tons,1));
+  for(let i=0;i<5;i++){
+    const y=pad.t+ch*i/4;ctx.strokeStyle='#e9eef5';ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(w-pad.r,y);ctx.stroke();
+    ctx.fillStyle='#3478f6';ctx.textAlign='right';ctx.textBaseline='middle';ctx.fillText(String(Math.round(maxL*(1-i/4))),pad.l-6,y);
+    ctx.fillStyle='#13a89e';ctx.textAlign='left';ctx.fillText(String(Math.round(maxR*(1-i/4))),w-pad.r+6,y);
+  }
+  chartData.forEach((d,i)=>{
+    const x=pad.l+cw*(i+.5)/chartData.length,m=+d.month.slice(5,7);
+    ctx.fillStyle='#8292a5';ctx.textAlign='center';ctx.textBaseline='top';ctx.fillText(TH_MONTHS[m-1]+' '+d.month.slice(2,4),x,h-pad.b+8);
+  });
+  const line=(vals,max,color)=>{
+    const pt=(v,i)=>[pad.l+cw*(i+.5)/vals.length,pad.t+ch*(1-v/max)];
+    ctx.beginPath();vals.forEach((v,i)=>{const [x,y]=pt(v,i);i?ctx.lineTo(x,y):ctx.moveTo(x,y)});
+    ctx.strokeStyle=color;ctx.lineWidth=2.5;ctx.lineJoin='round';ctx.stroke();
+    vals.forEach((v,i)=>{const [x,y]=pt(v,i);ctx.beginPath();ctx.arc(x,y,3.2,0,Math.PI*2);ctx.fillStyle=color;ctx.fill()});
+  };
+  line(trips,maxL,'#3478f6');line(tons,maxR,'#13a89e');
+}
+window.addEventListener('resize',drawChart);
+document.querySelectorAll('.nav button[data-page],[data-goto]').forEach(b=>b.addEventListener('click',()=>setTimeout(drawChart,0)));
+
+async function loadEnv(){
+  try{
+    const r=await api('/api/environment',{limit:30,...filters()});
+    fill('envWx',r.weather.items,8,w=>`<tr><td>${txt(w.wr_station_name)}</td><td>${txt(w.wr_province)}</td><td>${day(w.wr_observed_date)}</td><td>${nf(w.wr_rain_mm,1)}</td><td>${nf(w.wr_max_temp_c,1)}</td><td>${nf(w.wr_min_temp_c,1)}</td><td>${nf(w.wr_max_wind_speed_knots)}</td><td>${nf(w.wr_humidity_pct)}</td></tr>`,esc(r.weather.note||'ไม่พบข้อมูลตามเงื่อนไขที่เลือก'));
+    fill('envSea',r.sea.items,8,s=>`<tr><td>${txt(s.sc_zone_id)}</td><td>${day(s.sc_date)}</td><td>${nf(s.sc_wave_height_max_m,2)}</td><td>${nf(s.sc_swell_height_max_m,2)}</td><td>${nf(s.sc_wave_period_max_s,1)}</td><td>${nf(s.sc_wave_direction_deg)}</td><td>${nf(s.sc_sst_avg_c,1)}</td><td>${nf(s.sc_current_speed_avg_kmh,2)}</td></tr>`);
+    const dates=[...r.weather.items.map(i=>day(i.wr_observed_date)),...r.sea.items.map(i=>day(i.sc_date))].filter(d=>d!==NA).sort();
+    const latest=dates.length?dates[dates.length-1]:null;
+    kv('kObsLast',latest||NA);
+    kv('envNote',`แสดง ${r.weather.returned} จาก ${nf(r.weather.total)} แถวอากาศ และ ${r.sea.returned} จาก ${nf(r.sea.total)} แถวทะเล (ใหม่สุดก่อน)${latest?' · ข้อมูลสังเกตการณ์ล่าสุดที่พบคือวันที่ '+latest+' ซึ่งไม่ใช่ข้อมูลสด':''}`);
+  }catch(e){fail('envWx',8,e);fail('envSea',8,e);kv('kObsLast','—');kv('envNote','โหลดไม่สำเร็จ')}
+}
+async function loadForecast(){
+  try{
+    const r=await api('/api/forecasts',{zone_id:$('zoneFilter').value,limit:300});
+    kv('kFcCount',nf(r.total));kv('kFcIssue',r.issue_date||NA);kv('kFcRuns','fc_issue_date · เก็บไว้ '+nf(r.runs_stored||0)+' รอบที่ดึง (แสดงรอบล่าสุด)');
+    const fetched=r.items.map(i=>i.fc_fetched_at).filter(Boolean).sort();
+    kv('kFcFetched',fetched.length?utc(fetched[fetched.length-1]):NA);
+    fill('fcBody',r.items,7,f=>`<tr><td>${txt(f.fc_zone_id)}</td><td>${txt(f.fc_forecast_date)}</td><td>${nf(f.fc_wave_height_max_m,2)}</td><td>${nf(f.fc_wave_period_max_s,1)}</td><td>${nf(f.fc_wind_speed_max_knots,1)}</td><td>${nf(f.fc_rain_mm,1)}</td><td>${utc(f.fc_fetched_at)}</td></tr>`,'ยังไม่มีข้อมูลพยากรณ์');
+  }catch(e){fail('fcBody',7,e);['kFcCount','kFcIssue','kFcFetched'].forEach(id=>kv(id,'—'))}
+}
+async function loadExports(){
+  try{
+    const r=await api('/api/exports/summary');
+    kv('kEx1',nf(r.orders));kv('kEx2',nf(r.total_weight_kg));kv('kEx3',nf(r.total_value_usd));kv('kEx4',nf(r.total_value_thb));
+    kv('exNote',`ช่วงวันที่สั่งซื้อ ${day(r.order_range.first)} ถึง ${day(r.order_range.last)} · ตัวเลขรวมทั้งฐานข้อมูล ไม่ผูกกับตัวกรองด้านบน`);
+  }catch(e){['kEx1','kEx2','kEx3','kEx4'].forEach(id=>kv(id,'—'));kv('exNote','โหลดไม่สำเร็จ: '+e.message)}
+}
+async function loadImages(){
+  try{
+    const r=await api('/api/images');
+    kv('kIm1',nf(r.total));
+    kv('kIm2',nf(r.items.filter(i=>i.ci_description).length));
+    kv('kIm3',nf(r.items.filter(i=>i.has_url).length));
+    kv('kIm4',nf(r.items.filter(i=>i.ci_trip_id).length));
+    fill('imgBody',r.items,8,i=>`<tr><td>${txt(i.ci_image_id)}</td><td>${txt(i.ci_trip_id)}</td><td>${txt(i.ci_stage)}</td><td>${txt((i.ci_species_ids||[]).join(', '))}</td><td>${utc(i.ci_taken_at).replace(' UTC','')}</td><td>${nf(i.ci_file_size_kb,1)}</td><td>${i.has_url?'มี':'ไม่มี'}</td><td style="white-space:normal;min-width:260px">${txt(i.ci_description)}</td></tr>`);
+  }catch(e){fail('imgBody',8,e);['kIm1','kIm2','kIm3','kIm4'].forEach(id=>kv(id,'—'))}
+}
+
+function filterText(){
+  const f=filters(),z=S.zones.find(x=>x.fz_zone_id===f.zone_id);
+  return 'ตัวกรอง: '+(f.zone_id==='all'||!z?'ทุกพื้นที่':z.fz_zone_name)+' · '+(f.date_from||'ไม่ระบุ')+' ถึง '+(f.date_to||'ไม่ระบุ')+' (ใช้กับเที่ยวเรือและข้อมูลสภาพแวดล้อม)';
+}
+async function loadAll(){
+  if(S.loading){toast('กำลังโหลดข้อมูลอยู่');return}
+  S.loading=true;$('refreshBtn').disabled=true;setBadge('load');
+  try{
+    let sum;
+    try{sum=await api('/api/summary')}catch(e){setBadge('fail',e);failAll(e);return}
+    setBadge('ok');renderSummary(sum);
+    await loadZones();          // zone dropdown first so the selected zone is validated
+    kv('filterStatus',filterText());
+    await Promise.allSettled([loadChart(sum),loadRecent(),loadTrips(),loadEnv(),loadForecast(),loadExports(),loadImages()]);
+    kv('lastUpdated','โหลดข้อมูลล่าสุดเมื่อ '+new Date().toLocaleString('th-TH'));
+  }finally{S.loading=false;$('refreshBtn').disabled=false}
+}
+
+$('refreshBtn').addEventListener('click',()=>{loadAll().then(()=>{if(!$('apiBadge').classList.contains('fail'))toast('รีเฟรชข้อมูลจาก MongoDB แล้ว')})});
+$('applyBtn').addEventListener('click',()=>{
+  const f=$('dateFrom').value,t=$('dateTo').value;
+  if(f&&t&&f>t){toast('วันที่เริ่มต้นต้องไม่อยู่หลังวันที่สิ้นสุด');return}
+  S.tripPage=1;loadAll();
+});
+$('resetBtn').addEventListener('click',()=>{$('zoneFilter').value='all';$('dateFrom').value='';$('dateTo').value='';S.tripPage=1;loadAll()});
+$('tripPrev').addEventListener('click',()=>{if(S.tripPage>1){S.tripPage--;loadTrips()}});
+$('tripNext').addEventListener('click',()=>{if(S.tripPage<S.tripPages){S.tripPage++;loadTrips()}});
+$('exportBtn').addEventListener('click',()=>{
+  if(!S.tripRows.length){toast('ยังไม่มีข้อมูลเที่ยวเรือให้ส่งออก');return}
+  const cell=v=>{let s=v==null?'':String(v);if(typeof v==='string'&&/^[=+\-@\t\r]/.test(s))s="'"+s;return '"'+s.replaceAll('"','""')+'"'};
+  const head=['Trip ID','Vessel','Gear','GT','Zone ID','Zone','Departure','Return','Crew','Catch kg','Revenue THB','Profit THB'];
+  const rows=S.tripRows.map(t=>{const v=t.ft_vessel||{},z=t.ft_zone||{};return [t.ft_trip_id,v.ve_vessel_name,v.ve_gear_type,v.ve_size_gt,z.fz_zone_id,z.fz_zone_name,day(t.ft_departure_date),day(t.ft_return_date),t.ft_crew_count,t.ft_total_catch_kg,t.ft_revenue_thb,t.ft_profit_thb]});
+  const csv='﻿'+[head,...rows].map(r=>r.map(cell).join(',')).join('\r\n');
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8;'}));
+  a.download='eec_seafood_trips_page'+S.tripPage+'.csv';a.click();URL.revokeObjectURL(a.href);
+  toast('ส่งออก CSV หน้าที่ '+S.tripPage+' ('+rows.length+' แถว) แล้ว');
+});
+loadAll();
+</script></body></html>

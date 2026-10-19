@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+.env
+data/raw_snapshot/*
+data/processed/*
+!data/raw_snapshot/.gitkeep
+!data/processed/.gitkeep
+logs/
+*.bak

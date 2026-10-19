@@ -1,0 +1,1 @@
+{"generated_at":"2026-10-19T09:28:05.956802+00:00","database":"eec_seafood","counts":{"fishing_trips":6353,"fishing_zones":23,"weather_reports":62999,"sea_conditions":39928,"export_orders":565,"catch_images":20,"weather_forcasting":322},"trip_range":["2022-01-01","2026-09-30"],"forecast_collection":"weather_forcasting"}
