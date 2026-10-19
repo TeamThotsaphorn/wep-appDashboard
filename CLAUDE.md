@@ -66,3 +66,4 @@
 - **ข้อมูลบนเว็บเป็นสาธารณะ** ห้ามส่งออกชื่อกัปตัน ชื่อเรือ ชื่อบริษัทลูกค้า และลิงก์/ไฟล์รูปภาพ (สคริปต์ 11 ตัดออกแล้ว ถ้าเพิ่มฟิลด์ใหม่ต้องตรวจซ้ำ)
 - ตัวเลขผลโมเดลใน `MODEL_TESTS`/`SINGLE_SPLIT` ของสคริปต์ 11 พิมพ์มือจากผลสคริปต์ 05–07 ถ้ารันโมเดลใหม่ต้องแก้ตาม
 - ทดสอบในเครื่อง: `python -m http.server 5601 --bind 127.0.0.1` ในโฟลเดอร์ docs แล้วเปิด http://127.0.0.1:5601 (เปิดแบบ file:// ไม่ได้ เพราะต้อง fetch JSON)
+- Repo: https://github.com/TeamThotsaphorn/wep-appDashboard (public, branch main) · Pages: https://teamthotsaphorn.github.io/wep-appDashboard/ (Source = main /docs)
